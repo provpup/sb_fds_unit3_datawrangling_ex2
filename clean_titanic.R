@@ -10,30 +10,18 @@ data <- tbl_df(data)
 
 # Fill NA values with S for the embarked column
 clean_embarked <- function (embarked) {
-  if (is.na(embarked)) {
-    return('S')
-  } else {
-    return(embarked)
-  }
+  return(ifelse(is.na(embarked), 'S', embarked))
 }
 
 mean_age = mean(data$age, na.rm = TRUE)
 # Fill NA values with the mean age for the age column
 clean_age <- function (age) {
-  if (is.na(age)) {
-    return(mean_age)
-  } else {
-    return(age)
-  }
+  return(ifelse(is.na(age), mean_age, age))
 }
 
 # Fill NA values with 'None' for the boat column
 clean_boat <- function (boat) {
-  if (is.na(boat)) {
-    return('None')
-  } else {
-    return(boat)
-  }
+  return(ifelse(is.na(boat), 'None', boat))
 }
 
 # Represent the presence of a cabin value as 1 and absence with 0
